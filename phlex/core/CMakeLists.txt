@@ -1,4 +1,5 @@
-add_library(phlex_core SHARED
+add_library(
+  phlex_core SHARED
   concurrency.cpp
   consumer.cpp
   declared_observer.cpp
@@ -26,35 +27,33 @@ add_library(phlex_core SHARED
 target_include_directories(phlex_core PRIVATE ${PROJECT_SOURCE_DIR})
 
 # AppleClang 15.0 still treats std::views::join as experimental
-if (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang" AND
-    CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL "14.5")
+if (CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang"
+    AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL "14.5"
+    )
   target_compile_options(phlex_core PRIVATE "-fexperimental-library")
-endif()
+endif ()
 
-target_link_libraries(phlex_core
-  PRIVATE
-    TBB::tbb
-    phlex::graph
-    phlex::metaprogramming
-    phlex::model
-    phlex::utilities
-    spdlog::spdlog
-)
+target_link_libraries(
+  phlex_core PRIVATE TBB::tbb phlex::graph phlex::metaprogramming phlex::model
+                     phlex::utilities spdlog::spdlog
+  )
 
 # Interface library
 add_library(phlex_core_int INTERFACE)
-target_include_directories(phlex_core_int INTERFACE
-  "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>"
-  "$<INSTALL_INTERFACE:include>")
-target_link_libraries(phlex_core_int
-  INTERFACE
-  phlex_core
-  phlex::metaprogramming
-  phlex::graph
-  phlex::model
-  phlex::utilities
-  Boost::json
-  TBB::tbb)
+target_include_directories(
+  phlex_core_int INTERFACE "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>"
+                           "$<INSTALL_INTERFACE:include>"
+  )
+target_link_libraries(
+  phlex_core_int
+  INTERFACE phlex_core
+            phlex::metaprogramming
+            phlex::graph
+            phlex::model
+            phlex::utilities
+            Boost::json
+            TBB::tbb
+  )
 
 add_library(phlex::core ALIAS phlex_core_int)
 

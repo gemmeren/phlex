@@ -7,9 +7,10 @@ add_subdirectory(utilities)
 
 # Interface library
 add_library(phlex_int INTERFACE)
-target_include_directories(phlex_int INTERFACE
-  "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>"
-  "$<INSTALL_INTERFACE:include>")
+target_include_directories(
+  phlex_int INTERFACE "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>"
+                      "$<INSTALL_INTERFACE:include>"
+  )
 target_link_libraries(phlex_int INTERFACE Boost::boost Boost::json phlex::core)
 
 add_library(phlex::module ALIAS phlex_int)

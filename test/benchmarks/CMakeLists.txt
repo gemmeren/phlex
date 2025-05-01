@@ -26,22 +26,44 @@ add_library(accept_even_numbers MODULE accept_even_numbers.cpp)
 target_link_libraries(accept_even_numbers PRIVATE phlex::module)
 
 add_library(accept_fibonacci_numbers MODULE accept_fibonacci_numbers.cpp)
-target_link_libraries(accept_fibonacci_numbers PRIVATE phlex::module fibonacci_numbers)
+target_link_libraries(
+  accept_fibonacci_numbers PRIVATE phlex::module fibonacci_numbers
+  )
 
-add_library(verify_even_fibonacci_numbers MODULE verify_even_fibonacci_numbers.cpp)
-target_link_libraries(verify_even_fibonacci_numbers PRIVATE phlex::module fibonacci_numbers)
+add_library(
+  verify_even_fibonacci_numbers MODULE verify_even_fibonacci_numbers.cpp
+  )
+target_link_libraries(
+  verify_even_fibonacci_numbers PRIVATE phlex::module fibonacci_numbers
+  )
 
 add_library(verify_difference MODULE verify_difference.cpp)
 target_link_libraries(verify_difference PRIVATE phlex::module)
 
-foreach(I IN ITEMS 01 02 03 04 05 06 07 08 09)
+foreach (
+  I IN
+  ITEMS 01
+        02
+        03
+        04
+        05
+        06
+        07
+        08
+        09
+  )
   set(test_name benchmark:${I})
   set(TEST_DIR ${CMAKE_CURRENT_BINARY_DIR}/benchmark-${I}.d)
   file(MAKE_DIRECTORY ${TEST_DIR})
-  add_test(NAME ${test_name}
-           COMMAND phlex -c ${CMAKE_CURRENT_SOURCE_DIR}/benchmark-${I}.jsonnet
-           -g benchmark-${I}
-           WORKING_DIRECTORY ${TEST_DIR})
-  set_tests_properties(${test_name} PROPERTIES ENVIRONMENT PHLEX_PLUGIN_PATH=${CMAKE_CURRENT_BINARY_DIR})
+  add_test(
+    NAME ${test_name}
+    COMMAND phlex -c ${CMAKE_CURRENT_SOURCE_DIR}/benchmark-${I}.jsonnet -g
+            benchmark-${I}
+    WORKING_DIRECTORY ${TEST_DIR}
+    )
+  set_tests_properties(
+    ${test_name} PROPERTIES ENVIRONMENT
+                            PHLEX_PLUGIN_PATH=${CMAKE_CURRENT_BINARY_DIR}
+    )
   dot_test(benchmark-${I})
-endforeach()
+endforeach ()
