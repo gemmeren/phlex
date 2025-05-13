@@ -175,8 +175,7 @@ namespace phlex::experimental {
             flag_for(store->id()->hash()).flush_received(msg.original_id);
             stay_in_graph.try_put(msg);
             to_output.try_put(msg);
-          }
-          else {
+          } else {
             accessor a;
             if (stores_.insert(a, store->id()->hash())) {
               auto result = call(ft, messages, std::make_index_sequence<N>{});
@@ -190,8 +189,7 @@ namespace phlex::experimental {
               stay_in_graph.try_put(new_msg);
               to_output.try_put(new_msg);
               flag_for(store->id()->hash()).mark_as_processed();
-            }
-            else {
+            } else {
               stay_in_graph.try_put({a->second, msg.eom, message_id});
             }
           }

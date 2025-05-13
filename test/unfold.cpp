@@ -68,8 +68,7 @@ namespace {
   {
     if (sum.level_id().number() == 0ull) {
       CHECK(*sum == 45);
-    }
-    else {
+    } else {
       CHECK(*sum == 190);
     }
   }

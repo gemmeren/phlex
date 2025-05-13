@@ -135,8 +135,7 @@ namespace phlex::experimental {
                   auto const& [store, message_id] = std::tie(msg.store, msg.id);
                   if (store->is_flush()) {
                     flag_for(store->id()->hash()).flush_received(message_id);
-                  }
-                  else if (accessor a; needs_new(store, a)) {
+                  } else if (accessor a; needs_new(store, a)) {
                     call(ft, messages, std::make_index_sequence<N>{});
                     a->second = true;
                     flag_for(store->id()->hash()).mark_as_processed();

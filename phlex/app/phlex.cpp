@@ -47,8 +47,7 @@ int main(int argc, char* argv[])
         .run(),
       vm);
     bpo::notify(vm);
-  }
-  catch (bpo::error const& e) {
+  } catch (bpo::error const& e) {
     std::cerr << "Exception from command line processing in " << argv[0] << ": " << e.what()
               << '\n';
     return 1;

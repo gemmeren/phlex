@@ -53,8 +53,7 @@ namespace phlex::experimental {
         }
         return {};
       }
-    }
-    else {
+    } else {
       auto const& result = t.cast_to<predicate_result>();
       decisions_.update(result);
       eom = result.eom;

@@ -189,8 +189,7 @@ namespace phlex::experimental {
           auto const& store = msg.store;
           if (store->is_flush()) {
             flag_for(store->id()->hash()).flush_received(msg.id);
-          }
-          else if (accessor a; stores_.insert(a, store->id()->hash())) {
+          } else if (accessor a; stores_.insert(a, store->id()->hash())) {
             std::size_t const original_message_id{msg_counter_};
             generator g{msg.store, this->full_name(), new_level_name_};
             call(p, ufold, msg.store->id(), g, msg.eom, messages, std::make_index_sequence<N>{});
@@ -261,8 +260,7 @@ namespace phlex::experimental {
           auto [next_value, prods] = std::invoke(unfold, obj, running_value, *new_id);
           new_products.add_all(output_, std::move(prods));
           running_value = next_value;
-        }
-        else {
+        } else {
           auto [next_value, prods] = std::invoke(unfold, obj, running_value);
           new_products.add_all(output_, std::move(prods));
           running_value = next_value;

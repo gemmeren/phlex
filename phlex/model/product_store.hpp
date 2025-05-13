@@ -90,8 +90,7 @@ namespace phlex::experimental {
     constexpr auto N = std::tuple_size_v<Tuple>;
     if constexpr (I == N - 1) {
       return more_derived(element, std::get<I>(tup));
-    }
-    else {
+    } else {
       return get_most_derived<I + 1>(tup, more_derived(element, std::get<I>(tup)));
     }
   }
@@ -103,8 +102,7 @@ namespace phlex::experimental {
     static_assert(N > 0ull);
     if constexpr (N == 1ull) {
       return std::get<0>(tup);
-    }
-    else {
+    } else {
       return get_most_derived<1ull>(tup, std::get<0>(tup));
     }
   }

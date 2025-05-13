@@ -36,8 +36,7 @@ namespace phlex::experimental {
           cv_.notify_one();
         }};
         gear_ = states::drive;
-      }
-      else {
+      } else {
         cv_.notify_one();
       }
 

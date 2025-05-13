@@ -23,8 +23,7 @@ namespace phlex::experimental {
     end_of_message_ptr current_eom{};
     if (parent_eom == nullptr) {
       current_eom = eoms_.emplace(end_of_message::make_base(&hierarchy_, store->id()));
-    }
-    else {
+    } else {
       current_eom = eoms_.emplace(parent_eom->make_child(store->id()));
     }
     return {store, current_eom, message_id, -1ull};

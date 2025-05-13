@@ -18,8 +18,7 @@ namespace phlex::experimental::detail {
   {
     if constexpr (std::is_same<R, void>{}) {
       return 0ull;
-    }
-    else {
+    } else {
       return number_types<R>;
     }
   }

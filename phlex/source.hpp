@@ -22,8 +22,7 @@ namespace phlex::experimental::detail {
   {
     if constexpr (requires { T{config}; }) {
       return std::make_shared<T>(config);
-    }
-    else {
+    } else {
       return std::make_shared<T>();
     }
   }
@@ -51,11 +50,9 @@ namespace phlex::experimental::detail {
     //      source is caching an iterator).
     if constexpr (next_function_with_driver<T>) {
       return [t = make<T>(config)](framework_driver& driver) { t->next(driver); };
-    }
-    else if (next_function_without_driver<T>) {
+    } else if (next_function_without_driver<T>) {
       return [t = make<T>(config)](framework_driver&) { t->next(); };
-    }
-    else {
+    } else {
       static_assert(false, "Must have a 'next()' function that returns 'void'");
     }
   }

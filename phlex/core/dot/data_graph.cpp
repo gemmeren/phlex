@@ -84,8 +84,7 @@ namespace phlex::experimental::dot {
       source_full_name = std::move(zip_node_name);
       source_name = source_full_name;
       source_color = "gray";
-    }
-    else {
+    } else {
       auto const& name = input.begin()->name;
       source_full_name = name.full();
       source_name = name.name();
@@ -105,8 +104,7 @@ namespace phlex::experimental::dot {
       target_full_name = std::move(unzip_node_name);
       target_name = target_full_name;
       target_color = "\"#a9a9a9\"";
-    }
-    else {
+    } else {
       auto const& name = *output.begin();
       target_full_name = name.full();
       target_name = name.name();
@@ -127,8 +125,7 @@ namespace phlex::experimental::dot {
              source_name,
              target_name,
              attributes{.color = "\"#a9a9a9\"", .fontsize = default_fontsize, .style = "dotted"});
-      }
-      else {
+      } else {
         edge(out,
              source_name,
              target_name,

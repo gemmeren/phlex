@@ -194,8 +194,7 @@ namespace phlex::experimental {
 
           if (store->is_flush()) {
             counter_for(id_hash_for_counter).set_flush_value(store, original_message_id);
-          }
-          else {
+          } else {
             call(ft, messages, std::make_index_sequence<N>{});
             counter_for(id_hash_for_counter).increment(store->id()->level_hash());
           }
@@ -258,8 +257,7 @@ namespace phlex::experimental {
       auto& result = results_.at(*store.id());
       if constexpr (requires { send(*result); }) {
         store.add_product(output()[0].name(), send(*result));
-      }
-      else {
+      } else {
         store.add_product(output()[0].name(), std::move(*result));
       }
       // Reclaim some memory; it would be better to erase the entire entry from the map,

@@ -63,8 +63,7 @@ namespace phlex::experimental {
   {
     if constexpr (N == 1ull) {
       return {&join};
-    }
-    else {
+    } else {
       return [&join]<std::size_t... Is>(
                std::index_sequence<Is...>) -> std::vector<tbb::flow::receiver<message>*> {
         return {&input_port<Is>(join)...};
@@ -96,8 +95,7 @@ namespace phlex::experimental {
     if constexpr (N > 1ull) {
       auto const index = port_index_for(product_labels, product_label);
       return receiver_for<0ull, N>(join, index);
-    }
-    else {
+    } else {
       return join;
     }
   }
