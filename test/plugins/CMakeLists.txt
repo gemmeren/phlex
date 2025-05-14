@@ -1,8 +1,10 @@
+find_package(Python COMPONENTS Development)
+
 add_library(module MODULE module.cpp)
 target_link_libraries(module PRIVATE phlex::module)
 
 add_library(pymodule MODULE pymodule.cpp)
-target_link_libraries(pymodule PRIVATE phlex::module PUBLIC python3.8)
+target_link_libraries(pymodule PRIVATE phlex::module PUBLIC Python::Python)
 
 add_library(output MODULE output.cpp)
 target_link_libraries(output PRIVATE phlex::module)
