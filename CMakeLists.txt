@@ -85,6 +85,10 @@ endif ()
 
 add_subdirectory(phlex)
 
+if (PHLEX_USE_FORM)
+  add_subdirectory(form)
+endif()
+
 include(CTest)
 if (BUILD_TESTING)
   add_subdirectory(test)
