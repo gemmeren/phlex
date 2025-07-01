@@ -50,7 +50,7 @@ namespace phlex::experimental {
 
   level_id_ptr id_for(char const* str);
   level_id_ptr id_for(std::vector<std::size_t> nums);
-  level_id_ptr operator"" _id(char const* str, std::size_t);
+  level_id_ptr operator""_id(char const* str, std::size_t);
   std::ostream& operator<<(std::ostream& os, level_id const& id);
 }
 
