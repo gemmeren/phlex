@@ -108,7 +108,7 @@ namespace phlex::experimental {
     return id_for(std::move(nums));
   }
 
-  level_id_ptr operator"" _id(char const* c_str, std::size_t) { return id_for(c_str); }
+  level_id_ptr operator""_id(char const* c_str, std::size_t) { return id_for(c_str); }
 
   level_id_ptr level_id::parent() const noexcept { return parent_; }
 
