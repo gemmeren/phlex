@@ -37,6 +37,12 @@ namespace phlex::experimental::detail {
     { t.next() } -> std::same_as<void>;
   };
 
+  // Workaround for static_assert(false) until P2593R1 is adopted
+  //   https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2593r1.html
+  // static_assert(false) is supported in GCC 13 and newer
+  template <typename T>
+  constexpr bool always_false{false};
+
   template <typename T>
   std::function<void(framework_driver&)> create_next(configuration const& config = {})
   {
@@ -50,10 +56,10 @@ namespace phlex::experimental::detail {
     //      source is caching an iterator).
     if constexpr (next_function_with_driver<T>) {
       return [t = make<T>(config)](framework_driver& driver) { t->next(driver); };
-    } else if (next_function_without_driver<T>) {
+    } else if constexpr (next_function_without_driver<T>) {
       return [t = make<T>(config)](framework_driver&) { t->next(); };
     } else {
-      static_assert(false, "Must have a 'next()' function that returns 'void'");
+      static_assert(always_false<T>, "Must have a 'next()' function that returns 'void'");
     }
   }
 
