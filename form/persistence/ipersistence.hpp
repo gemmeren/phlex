@@ -12,7 +12,7 @@ namespace form::detail::experimental {
   class IPersistence {
   public:
     IPersistence() {};
-    virtual ~IPersistence() {};
+    virtual ~IPersistence() = default;
 
     virtual void createContainers(const std::string& creator,
                                   const std::map<std::string, std::string>& products) = 0;
