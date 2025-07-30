@@ -14,10 +14,12 @@ namespace form::detail::experimental {
     ~Storage_File();
 
     const std::string& name();
+    const char mode();
 
   private:
     std::string m_name;
+    char m_mode;
   };
-}
+} // namespace form::detail::experimental
 
 #endif
