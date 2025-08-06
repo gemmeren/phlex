@@ -1,4 +1,4 @@
-#include "config.hpp"
+#include "phlex_toy_config.hpp"
 
 namespace phlex::config {
 
