@@ -10,8 +10,6 @@
 #include "storage/storage_file.hpp"
 
 #ifdef USE_ROOT_STORAGE
-#include "root_storage/root_rfield_container.hpp"
-#include "root_storage/root_rntuple_container.hpp"
 #include "root_storage/root_tbranch_container.hpp"
 #include "root_storage/root_tfile.hpp"
 #include "root_storage/root_ttree_container.hpp"
@@ -37,8 +35,7 @@ namespace form::detail::experimental {
       if (int(tech % 256) == 1) { //ROOT TTree minor technology
 #ifdef USE_ROOT_STORAGE
         return std::make_shared<ROOT_TTree_ContainerImp>(name);
-      } else if (int(tech % 256) == 2) { //ROOT RNtuple minor technology
-        return std::make_shared<ROOT_RNTuple_ContainerImp>(name);
+      }
 #endif
       }
     }
@@ -51,8 +48,6 @@ namespace form::detail::experimental {
       if (int(tech % 256) == 1) { //ROOT TTree minor technology
 #ifdef USE_ROOT_STORAGE
         return std::make_shared<ROOT_TBranch_ContainerImp>(name);
-      } else if (int(tech % 256) == 2) { //ROOT RNTuple minor technology
-        return std::make_shared<ROOT_RField_ContainerImp>(name);
       }
 #endif
     }
