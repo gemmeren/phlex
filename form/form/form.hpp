@@ -6,7 +6,7 @@
 #include "form/parse_config.hpp"
 #include "persistence/ipersistence.hpp"
 #include "phlex_driver/config.hpp"
-#include "phlex_toy_core.hpp" // FORM Interface may include core phlex modules
+#include "phlex_driver/phlex_toy_core.hpp" // FORM Interface may include core phlex modules
 
 #include <memory>
 #include <string>
