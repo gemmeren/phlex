@@ -3,9 +3,9 @@
 #ifndef __FORM_H__
 #define __FORM_H__
 
-#include "form/parse_config.hpp"
-#include "form/phlex_toy_core.hpp"
-#include "form/ phlex_toy_config.hpp"
+#include "parse_config.hpp"
+#include "phlex_toy_core.hpp"
+#include "phlex_toy_config.hpp"
 #include "persistence/ipersistence.hpp"
 
 #include <memory>
